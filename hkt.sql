@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- 主機: 127.0.0.1
--- 產生時間： 2019 年 03 月 20 日 15:41
--- 伺服器版本: 10.1.35-MariaDB
--- PHP 版本： 7.2.9
+-- Host: 127.0.0.1
+-- Generation Time: Apr 01, 2019 at 09:32 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 資料庫： `hkt`
+-- Database: `hkt`
 --
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `engineeringteams`
+-- Table structure for table `engineeringteams`
 --
 
 CREATE TABLE `engineeringteams` (
@@ -37,16 +37,16 @@ CREATE TABLE `engineeringteams` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 資料表的匯出資料 `engineeringteams`
+-- Dumping data for table `engineeringteams`
 --
 
 INSERT INTO `engineeringteams` (`team_id`, `username`, `person_in_charge_name`, `email`, `tel`) VALUES
-(1, 'user2', 'pic1', 'pic1@gmail.com', 87654321);
+(123, 'user2', 'pic1', 'pic1@gmail.com', 87654321);
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `hktcontrolstaffs`
+-- Table structure for table `hktcontrolstaffs`
 --
 
 CREATE TABLE `hktcontrolstaffs` (
@@ -58,7 +58,7 @@ CREATE TABLE `hktcontrolstaffs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 資料表的匯出資料 `hktcontrolstaffs`
+-- Dumping data for table `hktcontrolstaffs`
 --
 
 INSERT INTO `hktcontrolstaffs` (`staff_id`, `username`, `staff_name`, `email`, `tel`) VALUES
@@ -68,7 +68,7 @@ INSERT INTO `hktcontrolstaffs` (`staff_id`, `username`, `staff_name`, `email`, `
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `itemcases`
+-- Table structure for table `itemcases`
 --
 
 CREATE TABLE `itemcases` (
@@ -81,7 +81,7 @@ CREATE TABLE `itemcases` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `orders`
+-- Table structure for table `orders`
 --
 
 CREATE TABLE `orders` (
@@ -95,18 +95,18 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 資料表的匯出資料 `orders`
+-- Dumping data for table `orders`
 --
 
 INSERT INTO `orders` (`order_number`, `BSN`, `order_status`, `assigning_date`, `pre_visit_date`, `wiring_date`, `team_id`) VALUES
-(123, 'BSN123', 'pending', '2019-03-12', '2019-03-12', '2019-03-12', 321),
-(545, 'BNS654', 'Assigned', '2019-03-18', '2019-03-18', '2019-03-18', 123),
-(654, 'BSN654', 'pending', '2019-03-17', '2019-03-17', '2019-03-17', 884);
+(123, 'BSN123', 'Pending', '2019-03-12', '2019-03-12', '2019-03-12', 321),
+(545, 'BSN654', 'Assigned', '2019-03-18', '2019-03-18', '2019-03-18', 123),
+(654, 'BSN654', 'Pending', '2019-03-17', '2019-03-17', '2019-03-17', 884);
 
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `pendingcases`
+-- Table structure for table `pendingcases`
 --
 
 CREATE TABLE `pendingcases` (
@@ -118,7 +118,7 @@ CREATE TABLE `pendingcases` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `pendingreasons`
+-- Table structure for table `pendingreasons`
 --
 
 CREATE TABLE `pendingreasons` (
@@ -127,7 +127,7 @@ CREATE TABLE `pendingreasons` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 資料表的匯出資料 `pendingreasons`
+-- Dumping data for table `pendingreasons`
 --
 
 INSERT INTO `pendingreasons` (`reason_id`, `description`) VALUES
@@ -159,7 +159,7 @@ INSERT INTO `pendingreasons` (`reason_id`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `quotations`
+-- Table structure for table `quotations`
 --
 
 CREATE TABLE `quotations` (
@@ -172,7 +172,7 @@ CREATE TABLE `quotations` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -182,7 +182,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 資料表的匯出資料 `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`username`, `password`, `user_type`) VALUES
@@ -193,7 +193,7 @@ INSERT INTO `users` (`username`, `password`, `user_type`) VALUES
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `workitems`
+-- Table structure for table `workitems`
 --
 
 CREATE TABLE `workitems` (
@@ -204,7 +204,7 @@ CREATE TABLE `workitems` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- 資料表的匯出資料 `workitems`
+-- Dumping data for table `workitems`
 --
 
 INSERT INTO `workitems` (`work_item_id`, `description`, `unit`, `unit_rate`) VALUES
@@ -260,25 +260,25 @@ INSERT INTO `workitems` (`work_item_id`, `description`, `unit`, `unit_rate`) VAL
 ('MIS.2', '', 'Man-hour', 65.2);
 
 --
--- 已匯出資料表的索引
+-- Indexes for dumped tables
 --
 
 --
--- 資料表索引 `engineeringteams`
+-- Indexes for table `engineeringteams`
 --
 ALTER TABLE `engineeringteams`
   ADD PRIMARY KEY (`team_id`),
   ADD KEY `username` (`username`);
 
 --
--- 資料表索引 `hktcontrolstaffs`
+-- Indexes for table `hktcontrolstaffs`
 --
 ALTER TABLE `hktcontrolstaffs`
   ADD PRIMARY KEY (`staff_id`),
   ADD KEY `username` (`username`);
 
 --
--- 資料表索引 `itemcases`
+-- Indexes for table `itemcases`
 --
 ALTER TABLE `itemcases`
   ADD PRIMARY KEY (`item_case_id`),
@@ -286,13 +286,13 @@ ALTER TABLE `itemcases`
   ADD KEY `work_item_id` (`work_item_id`);
 
 --
--- 資料表索引 `orders`
+-- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_number`);
 
 --
--- 資料表索引 `pendingcases`
+-- Indexes for table `pendingcases`
 --
 ALTER TABLE `pendingcases`
   ADD PRIMARY KEY (`case_id`),
@@ -300,102 +300,102 @@ ALTER TABLE `pendingcases`
   ADD KEY `pending_reason_id` (`pending_reason_id`);
 
 --
--- 資料表索引 `pendingreasons`
+-- Indexes for table `pendingreasons`
 --
 ALTER TABLE `pendingreasons`
   ADD PRIMARY KEY (`reason_id`);
 
 --
--- 資料表索引 `quotations`
+-- Indexes for table `quotations`
 --
 ALTER TABLE `quotations`
   ADD PRIMARY KEY (`quotation_id`),
   ADD KEY `order_number` (`order_number`);
 
 --
--- 資料表索引 `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`username`);
 
 --
--- 資料表索引 `workitems`
+-- Indexes for table `workitems`
 --
 ALTER TABLE `workitems`
   ADD PRIMARY KEY (`work_item_id`);
 
 --
--- 在匯出的資料表使用 AUTO_INCREMENT
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- 使用資料表 AUTO_INCREMENT `engineeringteams`
+-- AUTO_INCREMENT for table `engineeringteams`
 --
 ALTER TABLE `engineeringteams`
-  MODIFY `team_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `team_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
--- 使用資料表 AUTO_INCREMENT `hktcontrolstaffs`
+-- AUTO_INCREMENT for table `hktcontrolstaffs`
 --
 ALTER TABLE `hktcontrolstaffs`
   MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- 使用資料表 AUTO_INCREMENT `itemcases`
+-- AUTO_INCREMENT for table `itemcases`
 --
 ALTER TABLE `itemcases`
   MODIFY `item_case_id` int(20) NOT NULL AUTO_INCREMENT;
 
 --
--- 使用資料表 AUTO_INCREMENT `pendingcases`
+-- AUTO_INCREMENT for table `pendingcases`
 --
 ALTER TABLE `pendingcases`
   MODIFY `case_id` int(20) NOT NULL AUTO_INCREMENT;
 
 --
--- 使用資料表 AUTO_INCREMENT `pendingreasons`
+-- AUTO_INCREMENT for table `pendingreasons`
 --
 ALTER TABLE `pendingreasons`
   MODIFY `reason_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- 使用資料表 AUTO_INCREMENT `quotations`
+-- AUTO_INCREMENT for table `quotations`
 --
 ALTER TABLE `quotations`
   MODIFY `quotation_id` int(20) NOT NULL AUTO_INCREMENT;
 
 --
--- 已匯出資料表的限制(Constraint)
+-- Constraints for dumped tables
 --
 
 --
--- 資料表的 Constraints `engineeringteams`
+-- Constraints for table `engineeringteams`
 --
 ALTER TABLE `engineeringteams`
   ADD CONSTRAINT `engineeringteams_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
 
 --
--- 資料表的 Constraints `hktcontrolstaffs`
+-- Constraints for table `hktcontrolstaffs`
 --
 ALTER TABLE `hktcontrolstaffs`
   ADD CONSTRAINT `hktcontrolstaffs_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`);
 
 --
--- 資料表的 Constraints `itemcases`
+-- Constraints for table `itemcases`
 --
 ALTER TABLE `itemcases`
   ADD CONSTRAINT `itemcases_ibfk_1` FOREIGN KEY (`quotation_id`) REFERENCES `quotations` (`quotation_id`),
   ADD CONSTRAINT `itemcases_ibfk_2` FOREIGN KEY (`work_item_id`) REFERENCES `workitems` (`work_item_id`);
 
 --
--- 資料表的 Constraints `pendingcases`
+-- Constraints for table `pendingcases`
 --
 ALTER TABLE `pendingcases`
   ADD CONSTRAINT `pendingcases_ibfk_1` FOREIGN KEY (`order_number`) REFERENCES `orders` (`order_number`),
   ADD CONSTRAINT `pendingcases_ibfk_2` FOREIGN KEY (`pending_reason_id`) REFERENCES `pendingreasons` (`reason_id`);
 
 --
--- 資料表的 Constraints `quotations`
+-- Constraints for table `quotations`
 --
 ALTER TABLE `quotations`
   ADD CONSTRAINT `quotations_ibfk_1` FOREIGN KEY (`order_number`) REFERENCES `orders` (`order_number`);
