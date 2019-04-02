@@ -11,6 +11,7 @@
 </head>
 <body>
 <?php
+                            header('Content-type: text/javascript');
                             require_once('dbconnect.php');
 
                         // reading json file
@@ -47,6 +48,9 @@
                             mysqli_stmt_execute($st); 
                         }
                         ?>
+
+                        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+                        <script src="global.js"></script>
 
 </body>
 </html>
