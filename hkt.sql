@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2019 at 09:32 PM
+-- Generation Time: Apr 02, 2019 at 03:33 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -21,6 +21,76 @@ SET time_zone = "+00:00";
 --
 -- Database: `hkt`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `atg`
+--
+
+CREATE TABLE `atg` (
+  `ABC` varchar(3) DEFAULT NULL,
+  `Work_Item` varchar(8) DEFAULT NULL,
+  `Description_Of_Works` varchar(132) DEFAULT NULL,
+  `Unit` varchar(16) DEFAULT NULL,
+  `New_Price` varchar(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `atg`
+--
+
+INSERT INTO `atg` (`ABC`, `Work_Item`, `Description_Of_Works`, `Unit`, `New_Price`) VALUES
+('ATG', 'G1-1', 'Run & install optical fibre, 2/4 cores, horizontal with associated components/outlets within 60 metres upon service subscription', 'Each job', '400.0'),
+('ATG', 'G1-2', 'Run & install optical fibre, 2/4 cores, horizontal with associated components/outlets within 100 metres upon service subscription', 'Each job', '500.0'),
+('ATG', 'G2-22', 'Mechanical splicing of no polish connector (NPC) with single fibre with assembly tools', 'Per connector', '30.1'),
+('ATG', 'G2-54', 'Fix PVC Pipe up to 56mm Internal Diameter including Bracket and Saddle', 'Metre', '15.6'),
+('ATG', 'G2-55', 'Fix PVC Pipe 107mm Internal Diameter including Bracket and Saddle', 'Metre', '18.8'),
+('ATG', 'G2-56', 'Run and Fix Flexible Plastic Tube for Wiring Protection', 'Metre', '5.7'),
+('ATG', 'G2-57', 'Supply and On-site install Galvanized Iron Trunking (1.2mm thickness) 50mm x 50mm (including easy bends/adaptors/ accessories etc.)', 'Metre', '224.8'),
+('ATG', 'G2-58', 'Supply and On-site install Galvanized Iron Trunking (1.2mm thickness) 75mm x 75mm (including easy bends/adaptors/ accessories etc.)', 'Metre', '239.1'),
+('ATG', 'G2-59', 'Supply and On-site Install Galvanized Iron Trunking (1.2mm Thickness) 100mm x 100mm (including easy bends/adaptors/accessories etc.)', 'Metre', '262.2'),
+('ATG', 'G2-60', 'Supply and On-site Install Galvanized Iron Trunking (1.2mm Thickness) 150mm x 150mm (including easy bends/adaptors/accessories etc.)', 'Metre', '385.2'),
+('ATG', 'G2-69', 'Install PVC Trunking up to 100mm x 100 mm', 'Per metre', '49.1'),
+('ATG', 'G2-72', 'Cut Access Panel at Gypsum/Wooden Board Type False Ceiling and Make Good (400mm x 400mm)', 'Each', '1119.1'),
+('ATG', 'G2-73', 'Cut Access Panel at Gypsum/Wooden Board Type False Ceiling and Make Good (600mm x 600mm)', 'Each', '1171.9'),
+('ATG', 'G2-74', 'Cut Access Panel at Aluminium Type False Ceiling and Make Good (400mm x 400mm) ', 'Each', '1130.4'),
+('ATG', 'G2-75', 'Cut Access Panel at Aluminium Type False Ceiling and Make Good (600mm x 600mm) ', 'Each', '1246.3'),
+('ATG', 'G2-76', 'Dismantle and Reinstate Fragile/Complicated False Ceiling', 'Square', '61.4'),
+('ATG', 'G2-77', 'Cut and Make Good Hole on Dis-case up to 50mm Diameter', 'Each', '43.9'),
+('ATG', 'G2-78', 'Cut Hole on Metal Trunk up to 50mm Diameter/Square and Cushion with Rubber Grommet/Brushing', 'Each ', '51.1'),
+('ATG', 'G2-79', 'Cut and Reinstate Hole Through Wall/Floor up to 30mm Diameter/Square', 'Each', '77.5'),
+('ATG', 'G2-80', 'Cut and Reinstate Hole Through Wall/Floor up to 40mm Diameter/Square', 'Each', '93.6'),
+('ATG', 'G2-81', 'Cut & Reinstate Hole through Wall/Floor up to 80mm diameter/square ', 'Each', '187.3'),
+('ATG', 'G2-82', 'Cut & Reinstate Hole through Wall/Floor up to 120mm diameter/square ', 'Each', '299.0'),
+('ATG', 'G2-83', 'Cut and Reinstate Hole Through Wall/Floor up to 150mm Diameter/Square', 'Each', '356.9'),
+('ATG', 'G2-84', 'Supply and Install 20mm Diameter Galvanized Iron Conduit to BS4568', 'Per metre', '81.3'),
+('ATG', 'G2-85', 'Supply and Install 25mm Diameter Galvanized Iron Conduit to BS4568', 'Per metre', '108.8'),
+('ATG', 'G2-86', 'Supply and Install 32mm Diameter Galvanized Iron Conduit to BS4568', 'Per metre', '103.9'),
+('ATG', 'G2-87', 'Supply and Install up to 32mm Diameter PVC Coated Flexible Metal Conduit/Flexible Metal Conduit', 'Per metre', '126.4'),
+('ATG', 'G2-88', 'Supply and Install 50mm Diameter PVC Coated Flexible Metal Conduit/Flexible Metal Conduit', 'Per metre', '145.0'),
+('ATG', 'G2-116', 'Paint Conduit (All Types) ', 'Per metre', '15.5'),
+('ATG', 'G2-117', 'Paint Metal Trunking 50-75mm to Match Surrounding', 'Metre', '24.3'),
+('ATG', 'G2-118', 'Paint Metal Trunking 100-150mm to Match Surrounding', 'Metre', '27.5'),
+('ATG', 'G2-121', 'Paint False Ceiling/Wall/Promat', 'Per square metre', '78.6'),
+('ATG', 'G2-143', 'Supply and Install 2 Hours Fire Rating \'Promat Brand Board\' with Company Approved Materials for Fire Resisting Construction.', 'Square Metre', '971.4'),
+('ATG', 'G2-144', 'Supply and Install 4 Hours Fire Rating \'Promat Brand Board\' with Company Approved Materials for Fire Resisting Construction.', 'Square Metre', '1092.2'),
+('ATG', 'G2-145', 'Dismantle & Reinstate \"Promat\" Board ', 'Square Metre', '65.6'),
+('ATG', 'G2-146', 'Supply of Skilled Planning Labour', 'Manhour', '94.2'),
+('ATG', 'G2-147', 'Supply of Skilled Labour', '-', '-'),
+('ATG', 'a.1', 'Additional Site Check (Fast PON, PON Replenishment, Project ...)', 'Man-hour', '65.2'),
+('ATG', 'a.2', 'Additional Site Check ', 'Man-hour', '65.2'),
+('ATG', 'b', 'BMO Permit Application ', 'Man-hour', '65.2'),
+('ATG', 'c', 'Outlets (socket)', 'Man-hour', '32.6'),
+('ATG', 'd', '<blank>', 'Man-hour', '65.2'),
+('ATG', 'MIS.1', 'Third Party Charges (eg BMO, Nom-Contractor...)', 'Man-hour', '65.2'),
+('ATG', 'MIS.2', '<blank>', 'Man-hour', '65.2'),
+('ATG', 'D1(J)   ', 'Provide service by orders after normal working hours (Per Job)', 'Per Job', '0.1'),
+('ATG', 'D1(H)   ', 'Provide service by orders after normal working hours (Per Hour)', 'Man-hour', '71.72'),
+('ATG', 'H7.1', 'High Working Platform  Up to 5M height, 2 days per job ', 'Each  ', '2000.0'),
+('ATG', 'H7.2', 'High Working Platform  Up to 5M height, 1 week per job', 'Each  ', '3000.0'),
+('ATG', 'H7.3', 'High Working Platform  Up to 9M height, 2 days per job ', 'Each  ', '4000.0'),
+('ATG', 'H7.4', 'High Working Platform  Up to 9M height, 1 week per job', 'Each  ', '5000.0');
 
 -- --------------------------------------------------------
 
@@ -68,6 +138,58 @@ INSERT INTO `hktcontrolstaffs` (`staff_id`, `username`, `staff_name`, `email`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `ibi`
+--
+
+CREATE TABLE `ibi` (
+  `XYZ` varchar(3) DEFAULT NULL,
+  `Work_Item` varchar(5) DEFAULT NULL,
+  `Description_Of_Works` varchar(152) DEFAULT NULL,
+  `Unit` varchar(16) DEFAULT NULL,
+  `Usage` varchar(14) DEFAULT NULL,
+  `New_Price` varchar(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ibi`
+--
+
+INSERT INTO `ibi` (`XYZ`, `Work_Item`, `Description_Of_Works`, `Unit`, `Usage`, `New_Price`) VALUES
+('IBI', '34.0', 'Run & install Horziontal optical fibre, up to 4 cores, with associated components/outlets within 60 metres upon service subscription, Single-cable Run.', 'Each job', 'Fibre Drop', '301.1'),
+('IBI', '36.0', 'Run & install Horziontal optical fibre, up to 4 cores, with associated components/outlets within 100 metres upon service subscription, Single-cable Run.', 'Each job', 'Fibre Drop', '421.3'),
+('IBI', '42.0', 'Mechanical splicing of no polish connector (NPC) for single fibre with assembly tools', 'Per connector', 'Fibre  ', '39.4'),
+('IBI', '94.0', 'Fix PVC Pipe up to 56mm Internal Diameter including Bracket and Saddle', 'Each job', 'Pipe/Trunking', '21.9'),
+('IBI', '96.0', 'Run and Fix Flexible Plastic Tube for Wiring Protection', 'Per metre', 'Pipe/Trunking', '5.7'),
+('IBI', '113.0', 'Cut Access Panel at Gypsum/Wooden Board Type False Ceiling and Make Good (400mm X 400mm)', 'Each ', 'Cutting', '1077.7'),
+('IBI', '114.0', 'Cut Access Panel at Gypsum/Wooden Board Type False Ceiling and Make Good (600mm X 600mm)', 'Each ', 'Cutting', '1171.4'),
+('IBI', '115.0', 'Cut Access Panel at Aluminum Type False Ceiling and ake Good (400mm X 400mm)', 'Each ', 'Cutting', '1089.5'),
+('IBI', '116.0', 'Cut Access Panel at Aluminum Type False Ceiling and Make Good (600mm X 600mm)', 'Each ', 'Cutting', '1197.3'),
+('IBI', '117.0', 'Dismantle and Reinstate Fragile/Complicated False Ceiling', 'Per Square metre', 'Cutting', '72.4'),
+('IBI', '120.0', 'Cut and Reinstate Hole Through Wall/Floor up to 30mm Diameter/Square', 'Each', 'Cutting', '99.0'),
+('IBI', '122.0', 'Cut and Reinstate Hole Through Wall/Floor up to 80mm Diameter/Square', 'Each', 'Cutting', '251.4'),
+('IBI', '123.0', 'Cut and Reinstate Hole Through Wall/Floor up to 120mm Diameter/Square', 'Each', 'Cutting', '288.6'),
+('IBI', '124.0', 'Cut and Reinstate Hole Through Wall/Floor up to 150mm Diameter/Square', 'Each', 'Cutting', '359.9'),
+('IBI', '125.0', 'Supply and Install 20mm Diameter Galvanized Iron Conduit to BS4568', 'Per meter', 'Electrical', '95.6'),
+('IBI', '126.0', 'Supply and Install 25mm Diameter Galvanized Iron Conduit to BS4568', 'Per metre', 'Electrical', '103.8'),
+('IBI', '127.0', 'Supply and Install 32mm Diameter Galvanized Iron Conduit to BS4568', 'Per metre', 'Electrical', '77.8'),
+('IBI', '128.0', 'Supply and install  up to 32mm Diameter PVC Coated Flexible Metal Conduit/ Flexible Metal Conduit', 'Per metre', 'Electrical', '69.6'),
+('IBI', '129.0', 'Supply and install 50mm Diameter PVC Coated Flexible Metal Conduit/ Flexible Metal Conduit', 'Per metre', 'Electrical', '90.3'),
+('IBI', '224.0', 'Dismantle & Reinstate \"Promat\" Board', 'Per Square metre', 'Fire Resistant', '88.4'),
+('IBI', '225.0', 'Supply of Skilled Planning Labour', 'Per Man-hour', 'Labour', '124.2'),
+('IBI', '226.0', 'Supply of Skilled Labour', '-', '-', '-'),
+('IBI', 'a.1', 'Additional Site Check (Fast PON, PON Replenishment, Project ...)', 'Per Man-hour', 'Labour', '62.7'),
+('IBI', 'a.2', 'Additional Site Check ', 'Per Man-hour', 'Labour', '62.7'),
+('IBI', 'b', 'BMO Permit Application ', 'Per Man-hour', 'Labour', '62.7'),
+('IBI', 'c', 'Provide service by orders after normal working hours ', 'Per Man-hour', 'Labour', '62.7'),
+('IBI', 'd', 'Outlets (socket)', 'Each', NULL, '31.35'),
+('IBI', 'e', '<blank>', 'Per Man-hour', 'Labour', '62.7'),
+('IBI', 'MIS.1', 'High Working Platform ', 'Per Man-hour', 'Labour', '62.7'),
+('IBI', 'MIS.2', 'Third Party Charges (eg BMO, Nom-Contractor...)', 'Per Man-hour', 'Labour', '62.7'),
+('IBI', 'MIS.3', '<blank>', 'Per Man-hour', 'Labour', '62.7');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `itemcases`
 --
 
@@ -100,7 +222,7 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`order_number`, `BSN`, `order_status`, `assigning_date`, `pre_visit_date`, `wiring_date`, `team_id`) VALUES
 (123, 'BSN123', 'Pending', '2019-03-12', '2019-03-12', '2019-03-12', 321),
-(545, 'BSN654', 'Assigned', '2019-03-18', '2019-03-18', '2019-03-18', 123),
+(545, 'BSN545', 'Assigned', '2019-03-18', '2019-03-18', '2019-03-18', 123),
 (654, 'BSN654', 'Pending', '2019-03-17', '2019-03-17', '2019-03-17', 884);
 
 -- --------------------------------------------------------

@@ -4,88 +4,80 @@
      die("Connection failed". $conn-> connect_error);
  }
 
- $sel1 = "";
- $sel2 = "";
+ $sel3 = "order_status";
 
+ //all three inputs are filled
  if(isset($_POST['attribute']) && isset($_POST['search'])
-    && isset($_POST['date']) && isset($_POST["day"])){
+    && isset($_POST['date']) && isset($_POST["day"])
+    && isset($_POST['status'])){
     $firstSearchq = $_POST['search'];
-    $secondSearchq = $_POST["day"];
-    if($_POST['attribute']=="order_number"){
-        $sel1 = "order_number";}
-
-    else if($_POST['attribute']=="BSN"){
-        $sel1 = "BSN";}
-
-    else if($_POST['attribute']=="team_id"){
-        $sel1 = "team_id";}
-
-    if($_POST['date']=="AssigningDate"){
-        $sel2 = "assigning_date";}
-
-    else if($_POST['date']=="PreDate"){
-        $sel2 = "pre_visit_date";
-    }
-
-    else if($_POST['date']=="wiring"){
-        $sel2 = "wiring_date";}
-    
-    $query = "SELECT * FROM orders WHERE $sel1 = '$firstSearchq' && $sel2 = '$secondSearchq'";
+    $secondSearchq = $_POST['day'];
+    $thirdSearchq = $_POST['status'];
+    $sel1 = $_POST['attribute'];
+    $sel2 = $_POST['date'];
+    $query = "SELECT * FROM orders WHERE $sel1 = '$firstSearchq' && $sel2 = '$secondSearchq' && $sel3 = '$thirdSearchq'";
     $search_result = filterTable($query);
 }
 
+//order# and date are filled
+else if(isset($_POST['attribute']) && isset($_POST['search'])
+    && isset($_POST['date']) && isset($_POST["day"])){
+    $firstSearchq = $_POST['search'];
+    $secondSearchq = $_POST["day"];
+    $sel1 = $_POST['attribute'];
+    $sel2 = $_POST['date'];
+    $query = "SELECT * FROM orders WHERE $sel1 = '$firstSearchq' && $sel2 = '$secondSearchq'";
+    $search_result = filterTable($query);
+    }
 
+//order# and status are filled
+else if(isset($_POST['attribute']) && isset($_POST['search'])
+    && isset($_POST['status'])){
+        $firstSearchq = $_POST['search'];
+        $thirdSearchq = $_POST['status'];
+        $sel1 = $_POST['attribute'];
+        $query = "SELECT * FROM orders WHERE $sel1 = '$firstSearchq' && $sel3 = '$thirdSearchq'";
+        $search_result = filterTable($query);
+    }
+
+//date and status are filled
+else if(isset($_POST['date']) && isset($_POST["day"])
+    && isset($_POST['status'])){
+        $secondSearchq = $_POST['day'];
+        $thirdSearchq = $_POST['status'];
+        $sel2 = $_POST['date'];
+        $query = "SELECT * FROM orders WHERE $sel2 = '$secondSearchq' && $sel3 = '$thirdSearchq'";
+        $search_result = filterTable($query);
+    }
+
+//only attribute is filled
 else if(isset($_POST['attribute']) && isset($_POST['search'])){
     $searchq = $_POST['search'];
-    if($_POST['attribute']=="order_number"){
-        $sel1 = "order_number";
-        $query = "SELECT * FROM orders WHERE $sel1 = '$searchq'";
-        $search_result = filterTable($query);
-    }
-
-    else if($_POST['attribute']=="BSN"){
-        $sel1 = "BSN";
-        $query = "SELECT * FROM orders WHERE $sel1 = '$searchq'";
-        $search_result = filterTable($query);
-    }
-
-    else if($_POST['attribute']=="team_id"){
-        $sel1 = "team_id";
-        $query = "SELECT * FROM orders WHERE $sel1 = '$searchq'";
-        $search_result = filterTable($query);
-    }
-
+    $sel1 = $_POST['attribute'];
+    $query = "SELECT * FROM orders WHERE $sel1 = '$searchq'";
+    $search_result = filterTable($query);
 }
 
+//only date is filled
 else if(isset($_POST['date']) && isset($_POST["day"])){
     $searchq2 = $_POST["day"];
-
-    if($_POST['date']=="AssigningDate"){
-        $sel2 = "assigning_date";
-        $query = "SELECT * FROM orders WHERE $sel2 = '$searchq2'";
-        $search_result = filterTable($query);
-    }
-
-    else if($_POST['date']=="PreDate"){
-        $sel2 = "pre_visit_date";
-        $query = "SELECT * FROM orders WHERE $sel2 = '$searchq2'";
-        $search_result = filterTable($query);
-    }
-
-    else if($_POST['date']=="wiring"){
-        $sel2 = "wiring_date";
-        $query = "SELECT * FROM orders WHERE $sel2 = '$searchq2'";
-        $search_result = filterTable($query);
-    }
-
+    $sel2 = $_POST['date'];
+    $query = "SELECT * FROM orders WHERE $sel2 = '$searchq2'";
+    $search_result = filterTable($query);
 }
 
+//only status is filled
+else if(isset($_POST['status'])){
+    $searchq3 = $_POST["status"];
+    $query = "SELECT * FROM orders WHERE $sel3 = '$searchq3'";
+    $search_result = filterTable($query);
+}
+
+//nothing is filled
 else{
    $query = "SELECT * FROM orders";
    $search_result = filterTable($query);
 }
-
-
 
 function filterTable($query){
     $conn = mysqli_connect("localhost", "root", "", "hkt");
@@ -110,7 +102,13 @@ td {
 </head>
 <body>
 
-<form action="ShowingOrder2.php" method="post">
+<form action="ShowingOrder.php" method="post">
+
+<select name = "status">
+<option disabled selected value> --select an option--</option>
+<option value = "Pending">Pending</option>
+<option value = "Assigned">Assigned</option>
+</select>
 
 <select name = "attribute">
 <option disabled selected value> --select an option--</option>
@@ -119,16 +117,17 @@ td {
 <option value = "team_id">TeamId</option>
 </select>
 
+<input type="text" name="search" placeholder="Enter">
+
 <select name = "date">
 <option disabled selected value> --select an option--</option>
-<option value = "AssigningDate">Assigning Date</option>
-<option value = "PreDate">Pre-visit Date</option>
-<option value = "WiringDate">Wiring Date</option>
+<option value = "assigning_date">Assigning Date</option>
+<option value = "pre_visit_date">Pre-visit Date</option>
+<option value = "wiring_date">Wiring Date</option>
 </select>
 
 <input type="date" name="day">
 
-<input type="text" name="search" placeholder="Enter">
 <input type="submit" value="Search">
 </form>
 
