@@ -1,9 +1,9 @@
 <?php
 
        //ENTER YOUR DATABASE CONNECTION INFO BELOW:
-         $hostname="127.0.0.1";
+         $hostname="localhost";
          $database="hkt";
-         $username="";
+         $username="root";
          $password="";
 
    //DO NOT EDIT BELOW THIS LINE
