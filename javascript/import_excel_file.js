@@ -1,10 +1,8 @@
-<!--使用jQuery操作dom-->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-<!--使用JS-XLSX操作xlsx-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.2/xlsx.full.min.js"></script>
 
-<!--使用FileSaver下載資料成為檔案-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
 
 

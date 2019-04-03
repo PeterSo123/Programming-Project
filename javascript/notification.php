@@ -7,7 +7,6 @@ $result = $conn->query($sql);
     
 <?php
 //Fetch Data form databas
-        <!-- Javascript function for adding data -->
         <script language="javascript">
 		 // function of noticifation when user click ok button it will pull data into database
         // otherwise not submit data       
