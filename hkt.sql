@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2019 at 03:33 PM
+-- Generation Time: Apr 03, 2019 at 09:45 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -138,6 +138,39 @@ INSERT INTO `hktcontrolstaffs` (`staff_id`, `username`, `staff_name`, `email`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `holiday2019`
+--
+
+CREATE TABLE `holiday2019` (
+  `holiday` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `holiday2019`
+--
+
+INSERT INTO `holiday2019` (`holiday`) VALUES
+('2019-01-01'),
+('2019-02-05'),
+('2019-02-06'),
+('2019-02-07'),
+('2019-04-05'),
+('2019-04-19'),
+('2019-04-20'),
+('2019-04-22'),
+('2019-05-01'),
+('2019-05-13'),
+('2019-06-07'),
+('2019-07-01'),
+('2019-09-14'),
+('2019-10-01'),
+('2019-10-07'),
+('2019-12-25'),
+('2019-12-26');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ibi`
 --
 
@@ -213,17 +246,21 @@ CREATE TABLE `orders` (
   `assigning_date` varchar(20) NOT NULL,
   `pre_visit_date` varchar(20) NOT NULL,
   `wiring_date` varchar(20) NOT NULL,
-  `team_id` int(11) NOT NULL
+  `team_id` int(11) NOT NULL,
+  `pending_reason_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_number`, `BSN`, `order_status`, `assigning_date`, `pre_visit_date`, `wiring_date`, `team_id`) VALUES
-(123, 'BSN123', 'Pending', '2019-03-12', '2019-03-12', '2019-03-12', 321),
-(545, 'BSN545', 'Assigned', '2019-03-18', '2019-03-18', '2019-03-18', 123),
-(654, 'BSN654', 'Pending', '2019-03-17', '2019-03-17', '2019-03-17', 884);
+INSERT INTO `orders` (`order_number`, `BSN`, `order_status`, `assigning_date`, `pre_visit_date`, `wiring_date`, `team_id`, `pending_reason_id`) VALUES
+(123, 'BSN123', 'Pending', '2019-03-12', '2019-03-19', '2019-03-21', 321, 16),
+(222, 'BSN222', 'Pending', '2019-03-25', '2019-03-26', '', 123, 15),
+(333, 'BSN333', 'Pending', '2019-04-03', '2019-04-04', '', 123, 0),
+(444, 'BSN444', 'Pending', '2019-03-11', '2019-03-14', '', 123, 23),
+(545, 'BSN545', 'Assigned', '2019-03-16', '2019-03-18', '', 123, 0),
+(654, 'BSN654', 'Pending', '2019-03-17', '2019-03-19', '2019-03-24', 884, 3);
 
 -- --------------------------------------------------------
 
@@ -234,7 +271,8 @@ INSERT INTO `orders` (`order_number`, `BSN`, `order_status`, `assigning_date`, `
 CREATE TABLE `pendingcases` (
   `case_id` int(20) NOT NULL,
   `order_number` int(20) NOT NULL,
-  `pending_reason_id` int(20) NOT NULL
+  `pending_reason_id` int(20) NOT NULL,
+  `delay_date` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -245,38 +283,40 @@ CREATE TABLE `pendingcases` (
 
 CREATE TABLE `pendingreasons` (
   `reason_id` int(20) NOT NULL,
-  `description` varchar(1000) NOT NULL
+  `description` varchar(1000) NOT NULL,
+  `delay_date` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pendingreasons`
 --
 
-INSERT INTO `pendingreasons` (`reason_id`, `description`) VALUES
-(1, 'Cannot contact customer'),
-(2, 'Customer reject Pre Visit'),
-(3, 'Await Pre Visit schedule'),
-(4, 'Await wiring schedule'),
-(5, 'Await 2N/BMO Pre Visit schedule'),
-(6, 'Await 2N/BMO wiring schedule'),
-(7, 'Re-schedule wiring date'),
-(8, 'Re-schedule Pre Visit date'),
-(9, 'Site not ready'),
-(10, 'Await customer facility'),
-(11, 'Await quotation'),
-(12, 'Await quotation approval'),
-(13, 'Await nom-con quotation to CPN'),
-(14, 'Await nom-con quotation to Customer'),
-(15, 'Await BMO permit'),
-(16, 'Customer reject extra field work'),
-(17, 'BMO reject extra work'),
-(18, 'Third party issue'),
-(19, 'Blockage case'),
-(20, 'Await splitter issue'),
-(21, 'Customer reject extra cost'),
-(22, 'Order information issue'),
-(23, 'Await provide cross-connect'),
-(24, 'Customer request cancel');
+INSERT INTO `pendingreasons` (`reason_id`, `description`, `delay_date`) VALUES
+(0, '-', 0),
+(1, 'Customer reject Pre Visit', 0),
+(2, 'Re-schedule wiring date', 0),
+(3, 'Re-schedule Pre Visit date', 0),
+(4, 'Await quotation approval', 0),
+(5, 'Await nom-con quotation to Customer', 0),
+(6, 'Customer reject extra field work', 0),
+(7, 'BMO reject extra work', 0),
+(8, 'Third party issue', 0),
+(9, 'Blockage case', 0),
+(10, 'Customer reject extra cost', 0),
+(11, 'Order information issue', 0),
+(12, 'Await provide cross-connect', 0),
+(13, 'Customer request cancel', 0),
+(14, 'Await Pre Visit schedule', 7),
+(15, 'Await wiring schedule', 7),
+(16, 'Await 2N/BMO Pre Visit schedule', 7),
+(17, 'Await 2N/BMO wiring schedule', 7),
+(18, 'Site not ready', 7),
+(19, 'Await customer facility', 14),
+(20, 'Await quotation', 2),
+(21, 'Await nom-con quotation to CPN', 14),
+(22, 'Await BMO permit', 7),
+(23, 'Await splitter issue ', 14),
+(24, 'Cannot contact customer', 0);
 
 -- --------------------------------------------------------
 
@@ -478,7 +518,7 @@ ALTER TABLE `pendingcases`
 -- AUTO_INCREMENT for table `pendingreasons`
 --
 ALTER TABLE `pendingreasons`
-  MODIFY `reason_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `reason_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `quotations`
