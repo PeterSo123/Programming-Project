@@ -2,9 +2,7 @@
 <head>
     <title>Template</title>
     <style>
-        
-
-
+    
         h1 {
             text-align: left;
             display: inline;
@@ -13,7 +11,7 @@
         #office_use td {
             border: 0px;
         }
-        #main{
+        #main, #border_collapse{
             border-collapse: collapse;
         }
 
@@ -41,7 +39,7 @@
             text-align: center;
         }
 
-        div .bolt{
+        .bolt{
             font-weight: bold;
         }
     </style>
@@ -53,66 +51,39 @@
 
 <table id = "contractor" align = "right">
 <td> Contractor </td>
-<td> <input type="text" name="contractor" size="4"></td>
+<td id = "contractor_name"> Table(Contractor)</td>
 </table>
 <br>
 <br>
 
-
-
-<table >
+<table>
     <tr>
-    <td width="85%">
-    <table id = "orderinfo">
-        <tr>
-        <td>Quotation / <br>AOW No.</td> <td><input type="text" name="aow" size="9"></td>
-        </tr>
-        <tr>
-        <td>Quotation Date</td> <td><input type="date" name="date"></td>
-        </tr>
-        <tr>
-        <td>BSN Number</td> <td><select name = "BSN"><option>DB info</option><option value = "BSN123">BSN123</option></select></td>
-        </tr>
-        <tr>
-        <td>Order Number</td> <td><select name = "order"><option>DB info</option><option value = "123">123</option></select></td>
-        </tr>
-        </table>
-    </td>
+        <td>
+        <table id = "orderInfo" name = "orderInfo">
+            <tr>
+            <td>Quotation / <br>AOW No.: </td><td id = 'quotation'>Table: orderInfo</td>
+            </tr>
+            <tr>
+            <td>Quotation Date: </td><td id = 'quotation_date'>orderInfo</td>
+            </tr>
+            <tr>
+            <td>BSN Number: </td><td id = 'BSN'>orderInfo</td>
+            </tr>
+            <tr>
+            <td>Order Number: </td><td id = 'order_number'>orderInfo</td>
+            </tr>
+            </table>
+        </td>
 
-
-
-    <td>
-        <table id = "office_use" align = "right" border = "1">
-                <tr>
-                <td colspan = "2">
-                Office use:
-                </td>
-                </tr>
-                <tr>
-                <td colspan = "2">
-                <select name = "accept"><option value = "Pre-approved">Pre-approved</option><option value = "Customer-accpept">Custome Accpeptd</option></select>
-                </td>
-                </tr>
-                <tr>
-                <td colspan = "2">
-                <select name = "approvedBy"><option value = "product">Approved by Product</option><option value = "PM">PM</option></select>
-                </td>
-                </tr>
-                <tr>
-                <td colspan = "2">
-                Pre-Endorsed:
-                </td>
-                </tr>
-                <tr>
-                <td>
-                Checked by (Team Leader):
-                </td>
-                <td> <input type="text" name="leader" size="20"></td>
-                </tr>
-                
-                </table>
-
-</td>
+        <td width="18%">
+            <table id = "office_use" name = "office_use" align = "right" border = "1">
+                    <tr><td>Office use:</td><td id = "officeuse">Table: office_use</td></tr>
+                    <tr><td>Pre-approved / Custome Acceptd</td><td id = "accept">Custome Accpeptd</td></tr>
+                    <tr><td>Approved by Product / PM</td><td id = "approved_by">Table: office_use</td></tr>
+                    <tr><td>Pre-Endorsed:</td><td id = "pre-endorsed">Table: office_use</td></tr>
+                    <tr><td>Checked by (Team Leader):</td><td id = "checked_by">Table: office_use</td></tr>
+            </table>
+        </td>
     </tr>
 </table>
 
@@ -125,61 +96,61 @@
     </tr>
 
     <tr>
-        <td><select name = workitem><option>G1-1</option><option>G1-2</option></select></td>
-        <td class = "specialLeft"><input type="text" name="des" value="Description (testing)" readonly size = "100"></td>
-        <td><input type="text" name="unit" value="Man-hour" readonly size = "20"></td>
-        <td><input type="text" name="qty" size = "4" value="12"></td>
-        <td><input type="text" name="unit_rate" value="$123" readonly size = "10"></td>
-        <td><input type="text" name="amount" value="$5000" readonly size = "10"></td>
+        <td class='item'>Main: For you to find easily</td>
+        <td class='description' class = "specialLeft">Main Table</td>
+        <td class='unit'>Main Table</td>
+        <td class='qty'>Main Table</td>
+        <td class='unit_rate'>Main Table</td>
+        <td class='amount'>Main Table</td>
     </tr>
 
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td class='item'></td><td class='description' class = "specialLeft"></td><td class='unit'></td><td class='qty'></td><td class='unit_rate'></td><td class='amount'></td></tr>
+    <tr><td class='item'></td><td class='description' class = "specialLeft"></td><td class='unit'></td><td class='qty'></td><td class='unit_rate'></td><td class='amount'></td></tr>
+    <tr><td class='item'></td><td class='description' class = "specialLeft"></td><td class='unit'></td><td class='qty'></td><td class='unit_rate'></td><td class='amount'></td></tr>
+    <tr><td class='item'></td><td class='description' class = "specialLeft"></td><td class='unit'></td><td class='qty'></td><td class='unit_rate'></td><td class='amount'></td></tr>
+    <tr><td class='item'></td><td class='description' class = "specialLeft"></td><td class='unit'></td><td class='qty'></td><td class='unit_rate'></td><td class='amount'></td></tr>
+    <tr><td class='item'></td><td class='description' class = "specialLeft"></td><td class='unit'></td><td class='qty'></td><td class='unit_rate'></td><td class='amount'></td></tr>
+    <tr><td class='item'></td><td class='description' class = "specialLeft"></td><td class='unit'></td><td class='qty'></td><td class='unit_rate'></td><td class='amount'></td></tr>
+    <tr><td class='item'></td><td class='description' class = "specialLeft"></td><td class='unit'></td><td class='qty'></td><td class='unit_rate'></td><td class='amount'></td></tr>
+    <tr><td class='item'></td><td class='description' class = "specialLeft"></td><td class='unit'></td><td class='qty'></td><td class='unit_rate'></td><td class='amount'></td></tr>
         
 
 </table>
 
 <br>
 
-<div>
-<table>
+
+<table id = "total_amount" name = "total">
         <tr>
         <td width = "87.5%">*All Prices quoted are valid for 30 days from the date of stated on the quotation</td>
         <td class = "bolt" width = "8%">Total Amount (HK$)</td>
         <td width = "2.5%"></td>
-        <td align="right" ><input type="text" name="amount" value="$15000" readonly size = "10"></td>
+        <td align="right" id = "price">$15000</td>
         </tr>
 </table>
 
 
-<table>
+<table id = "remarks" name = "remarks">
         <tr>
         <td class = "bolt" width = "10%">Remarks:</td>
-        <td><textarea rows = "5" cols = "200" maxlength = "1000" name = "remarks"></textarea></td>
+        <td><table border = "1" id = 'border_collapse' width = "230%" style="height:90px;"><td valign="top" id ="remark">xxxxxxx</td></table></td>
         </tr>
 </table>
 
-<table>
+<table id ="upload">
         <tr>
         <td class = "bolt" width = "10%">Photo:</td>
-        <td><input type="file" accept="image/*" onchange="loadFile(event)">
+        <td id ="image_uploading"><input type="file" accept="image/*" onchange="loadFile(event)">
             <img id="output"/></td>
         </tr>
 </table>
-</div>
+
 </body>
 </html>
 
 <script>
-        var loadFile = function(event) {
-          var output = document.getElementById('output');
-          output.src = URL.createObjectURL(event.target.files[0]);
-        };
-      </script>
+    var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
