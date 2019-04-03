@@ -1,0 +1,185 @@
+<html>
+<head>
+    <title>Template</title>
+    <style>
+        
+
+
+        h1 {
+            text-align: left;
+            display: inline;
+        }
+
+        #office_use td {
+            border: 0px;
+        }
+        #main{
+            border-collapse: collapse;
+        }
+
+        .small{
+            width: 9%;
+            height: 50px;
+        }
+
+        .big{
+            text-align: left;
+            width: 55%;
+            height: 50px;
+        }
+
+        #main tr td{
+            text-align: center;
+            height: 50px;
+        }
+
+        #main tr .specialLeft{
+            text-align: left;
+        }
+
+        input[name=unit], input[name=qty], input[name=unit_rate]{
+            text-align: center;
+        }
+
+        div .bolt{
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+<h1>CPON Quotation Form</h1>
+
+<table id = "contractor" align = "right">
+<td> Contractor </td>
+<td> <input type="text" name="contractor" size="4"></td>
+</table>
+<br>
+<br>
+
+
+
+<table >
+    <tr>
+    <td width="85%">
+    <table id = "orderinfo">
+        <tr>
+        <td>Quotation / <br>AOW No.</td> <td><input type="text" name="aow" size="9"></td>
+        </tr>
+        <tr>
+        <td>Quotation Date</td> <td><input type="date" name="date"></td>
+        </tr>
+        <tr>
+        <td>BSN Number</td> <td><select name = "BSN"><option>DB info</option><option value = "BSN123">BSN123</option></select></td>
+        </tr>
+        <tr>
+        <td>Order Number</td> <td><select name = "order"><option>DB info</option><option value = "123">123</option></select></td>
+        </tr>
+        </table>
+    </td>
+
+
+
+    <td>
+        <table id = "office_use" align = "right" border = "1">
+                <tr>
+                <td colspan = "2">
+                Office use:
+                </td>
+                </tr>
+                <tr>
+                <td colspan = "2">
+                <select name = "accept"><option value = "Pre-approved">Pre-approved</option><option value = "Customer-accpept">Custome Accpeptd</option></select>
+                </td>
+                </tr>
+                <tr>
+                <td colspan = "2">
+                <select name = "approvedBy"><option value = "product">Approved by Product</option><option value = "PM">PM</option></select>
+                </td>
+                </tr>
+                <tr>
+                <td colspan = "2">
+                Pre-Endorsed:
+                </td>
+                </tr>
+                <tr>
+                <td>
+                Checked by (Team Leader):
+                </td>
+                <td> <input type="text" name="leader" size="20"></td>
+                </tr>
+                
+                </table>
+
+</td>
+    </tr>
+</table>
+
+<br>
+
+<table name = 'main' id = 'main' border = '1' width = "100%">
+
+    <tr>
+        <th class = 'small'>Item</th><th class = 'big'>Description Of Works</th><th class = 'small'>Unit</th><th class = 'small'>Qty</th><th class = 'small'>Unit Rate</th><th class = 'small'>Amount</th>
+    </tr>
+
+    <tr>
+        <td><select name = workitem><option>G1-1</option><option>G1-2</option></select></td>
+        <td class = "specialLeft"><input type="text" name="des" value="Description (testing)" readonly size = "100"></td>
+        <td><input type="text" name="unit" value="Man-hour" readonly size = "20"></td>
+        <td><input type="text" name="qty" size = "4" value="12"></td>
+        <td><input type="text" name="unit_rate" value="$123" readonly size = "10"></td>
+        <td><input type="text" name="amount" value="$5000" readonly size = "10"></td>
+    </tr>
+
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        
+
+</table>
+
+<br>
+
+<div>
+<table>
+        <tr>
+        <td width = "87.5%">*All Prices quoted are valid for 30 days from the date of stated on the quotation</td>
+        <td class = "bolt" width = "8%">Total Amount (HK$)</td>
+        <td width = "2.5%"></td>
+        <td align="right" ><input type="text" name="amount" value="$15000" readonly size = "10"></td>
+        </tr>
+</table>
+
+
+<table>
+        <tr>
+        <td class = "bolt" width = "10%">Remarks:</td>
+        <td><textarea rows = "5" cols = "200" maxlength = "1000" name = "remarks"></textarea></td>
+        </tr>
+</table>
+
+<table>
+        <tr>
+        <td class = "bolt" width = "10%">Photo:</td>
+        <td><input type="file" accept="image/*" onchange="loadFile(event)">
+            <img id="output"/></td>
+        </tr>
+</table>
+</div>
+</body>
+</html>
+
+<script>
+        var loadFile = function(event) {
+          var output = document.getElementById('output');
+          output.src = URL.createObjectURL(event.target.files[0]);
+        };
+      </script>
