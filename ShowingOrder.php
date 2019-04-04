@@ -15,7 +15,7 @@
     $thirdSearchq = $_POST['status'];
     $sel1 = $_POST['attribute'];
     $sel2 = $_POST['date'];
-    $query = "SELECT * FROM orders WHERE $sel1 = '$firstSearchq' && $sel2 = '$secondSearchq' && $sel3 = '$thirdSearchq'";
+    $query = "SELECT * FROM orders INNER JOIN pendingreasons ON orders.pending_reason_id = pendingreasons.reason_id WHERE $sel1 = '$firstSearchq' && $sel2 = '$secondSearchq' && $sel3 = '$thirdSearchq'";
     $search_result = filterTable($query);
 }
 
@@ -26,7 +26,7 @@ else if(isset($_POST['attribute']) && isset($_POST['search'])
     $secondSearchq = $_POST["day"];
     $sel1 = $_POST['attribute'];
     $sel2 = $_POST['date'];
-    $query = "SELECT * FROM orders WHERE $sel1 = '$firstSearchq' && $sel2 = '$secondSearchq'";
+    $query = "SELECT * FROM orders INNER JOIN pendingreasons ON orders.pending_reason_id = pendingreasons.reason_id WHERE $sel1 = '$firstSearchq' && $sel2 = '$secondSearchq'";
     $search_result = filterTable($query);
     }
 
@@ -36,7 +36,7 @@ else if(isset($_POST['attribute']) && isset($_POST['search'])
         $firstSearchq = $_POST['search'];
         $thirdSearchq = $_POST['status'];
         $sel1 = $_POST['attribute'];
-        $query = "SELECT * FROM orders WHERE $sel1 = '$firstSearchq' && $sel3 = '$thirdSearchq'";
+        $query = "SELECT * FROM orders INNER JOIN pendingreasons ON orders.pending_reason_id = pendingreasons.reason_id WHERE $sel1 = '$firstSearchq' && $sel3 = '$thirdSearchq'";
         $search_result = filterTable($query);
     }
 
@@ -46,7 +46,7 @@ else if(isset($_POST['date']) && isset($_POST["day"])
         $secondSearchq = $_POST['day'];
         $thirdSearchq = $_POST['status'];
         $sel2 = $_POST['date'];
-        $query = "SELECT * FROM orders WHERE $sel2 = '$secondSearchq' && $sel3 = '$thirdSearchq'";
+        $query = "SELECT * FROM orders INNER JOIN pendingreasons ON orders.pending_reason_id = pendingreasons.reason_id WHERE $sel2 = '$secondSearchq' && $sel3 = '$thirdSearchq'";
         $search_result = filterTable($query);
     }
 
@@ -54,7 +54,7 @@ else if(isset($_POST['date']) && isset($_POST["day"])
 else if(isset($_POST['attribute']) && isset($_POST['search'])){
     $searchq = $_POST['search'];
     $sel1 = $_POST['attribute'];
-    $query = "SELECT * FROM orders WHERE $sel1 = '$searchq'";
+    $query = "SELECT * FROM orders INNER JOIN pendingreasons ON orders.pending_reason_id = pendingreasons.reason_id WHERE $sel1 = '$searchq'";
     $search_result = filterTable($query);
 }
 
@@ -62,20 +62,20 @@ else if(isset($_POST['attribute']) && isset($_POST['search'])){
 else if(isset($_POST['date']) && isset($_POST["day"])){
     $searchq2 = $_POST["day"];
     $sel2 = $_POST['date'];
-    $query = "SELECT * FROM orders WHERE $sel2 = '$searchq2'";
+    $query = "SELECT * FROM orders INNER JOIN pendingreasons ON orders.pending_reason_id = pendingreasons.reason_id WHERE $sel2 = '$searchq2'";
     $search_result = filterTable($query);
 }
 
 //only status is filled
 else if(isset($_POST['status'])){
     $searchq3 = $_POST["status"];
-    $query = "SELECT * FROM orders WHERE $sel3 = '$searchq3'";
+    $query = "SELECT * FROM orders INNER JOIN pendingreasons ON orders.pending_reason_id = pendingreasons.reason_id WHERE $sel3 = '$searchq3'";
     $search_result = filterTable($query);
 }
 
 //nothing is filled
 else{
-   $query = "SELECT * FROM orders";
+   $query = "SELECT * FROM orders INNER JOIN pendingreasons ON orders.pending_reason_id = pendingreasons.reason_id";
    $search_result = filterTable($query);
 }
 
@@ -86,6 +86,37 @@ function filterTable($query){
     }
     $filter_Result = mysqli_query($conn,$query);
     return $filter_Result;
+}
+
+
+    
+function number_of_working_days($from, $to) {
+
+    $holidayDays = [];
+    if(sizeof($holidayDays) == 0){
+        $sql = "SELECT holiday FROM holiday2019";
+        $searchResult = filterTable($sql);
+        while($row = mysqli_fetch_array($searchResult)){  
+            array_push($holidayDays, $row['holiday']);
+        }
+    }
+
+    $workingDays = [1, 2, 3, 4, 5]; # date format = N (1 = Monday, ...)
+
+    $from = new DateTime($from);
+    $to = new DateTime($to);
+    $to->modify('+1 day');
+    $interval = new DateInterval('P1D');
+    $periods = new DatePeriod($from, $interval, $to);
+
+    $days = 0;
+    foreach ($periods as $period) {
+        if (!in_array($period->format('N'), $workingDays)) continue;
+        if (in_array($period->format('Y-m-d'), $holidayDays)) continue;
+        if (in_array($period->format('*-m-d'), $holidayDays)) continue;
+        $days++;
+    }
+    return $days;
 }
 ?>
 
@@ -104,10 +135,11 @@ td {
 
 <form action="ShowingOrder.php" method="post">
 
-<select name = "status">
+<select name = "status" onchange="this.form.submit()">
 <option disabled selected value> --select an option--</option>
 <option value = "Pending">Pending</option>
 <option value = "Assigned">Assigned</option>
+<option value = "Completed">Completed</option>
 </select>
 
 <select name = "attribute">
@@ -140,21 +172,36 @@ td {
   <th>Pre-visit Date</th>
   <th>Wiring Date</th>
   <th>Team-id</th>
+  <th>Description</th>
  </tr>
 
-<?php while($row=mysqli_fetch_array($search_result)):?>
-<tr>
-<td><?php echo $row["order_number"]; ?></td>
-<td><?php echo $row["BSN"]; ?></td>
-<td><?php echo $row["order_status"]; ?></td>
-<td><?php echo $row["assigning_date"]; ?></td>
-<td><?php echo $row["pre_visit_date"]; ?></td>
-<td><?php echo $row["wiring_date"]; ?></td>
-<td><?php echo $row["team_id"]; ?></td>
-</tr>
-<?php endwhile;?>
 
+<?php 
+while($row=mysqli_fetch_array($search_result)){
 
+    //pink order
+    if( (((($row["wiring_date"] == NULL && $row["order_status"] == "Assigned") || $row['reason_id'] == 2) && number_of_working_days($row["pre_visit_date"],date("Y-m-d")) >=2)
+        || ($row['reason_id'] == 3 && number_of_working_days($row["wiring_date"],date("Y-m-d")) >=2)) && $row["order_status"] != "Completed"
+        ) {
+        echo "<tr><td bgcolor='pink'>".$row["order_number"]."</td>"."<td>".$row["BSN"]."</td>"."<td>".$row["order_status"]."</td>"."<td>".$row["assigning_date"]."</td>"."<td>".$row["pre_visit_date"]."</td>"."<td>".$row["wiring_date"]."</td>"."<td>".$row["team_id"]."</td>"."<td>".$row['description']."</td></tr>";
+    }
+
+    //grey order
+    else if((($row['reason_id'] >= 14 && $row['reason_id'] <=22) && number_of_working_days($row["pre_visit_date"],date("Y-m-d")) >=$row['delay_date']) && $row["order_status"] != "Completed"){
+        echo "<tr><td bgcolor='silver'>".$row["order_number"]."</td>"."<td>".$row["BSN"]."</td>"."<td>".$row["order_status"]."</td>"."<td>".$row["assigning_date"]."</td>"."<td>".$row["pre_visit_date"]."</td>"."<td>".$row["wiring_date"]."</td>"."<td>".$row["team_id"]."</td>"."<td>".$row['description']."</td></tr>";
+    }
+
+    //light-blue order
+    else if(($row['reason_id'] == 23 && number_of_working_days($row["pre_visit_date"],date("Y-m-d")) >=$row['delay_date']) && $row["order_status"] != "Completed"){
+        echo "<tr><td bgcolor='#99FFFF'>".$row["order_number"]."</td>"."<td>".$row["BSN"]."</td>"."<td>".$row["order_status"]."</td>"."<td>".$row["assigning_date"]."</td>"."<td>".$row["pre_visit_date"]."</td>"."<td>".$row["wiring_date"]."</td>"."<td>".$row["team_id"]."</td>"."<td>".$row['description']."</td></tr>";
+    }
+
+    //no-colour order
+    else{
+        echo "<tr><td>".$row["order_number"]."</td>"."<td>".$row["BSN"]."</td>"."<td>".$row["order_status"]."</td>"."<td>".$row["assigning_date"]."</td>"."<td>".$row["pre_visit_date"]."</td>"."<td>".$row["wiring_date"]."</td>"."<td>".$row["team_id"]."</td>"."<td>".$row['description']."</td></tr>";
+    }
+}
+?>
 
 </table>
 </body>
