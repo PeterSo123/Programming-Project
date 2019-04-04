@@ -1,0 +1,156 @@
+<html>
+<head>
+    <title>Template</title>
+    <style>
+    
+        h1 {
+            text-align: left;
+            display: inline;
+        }
+
+        #office_use td {
+            border: 0px;
+        }
+        #main, #border_collapse{
+            border-collapse: collapse;
+        }
+
+        .small{
+            width: 9%;
+            height: 50px;
+        }
+
+        .big{
+            text-align: left;
+            width: 55%;
+            height: 50px;
+        }
+
+        #main tr td{
+            text-align: center;
+            height: 50px;
+        }
+
+        #main tr .specialLeft{
+            text-align: left;
+        }
+
+        input[name=unit], input[name=qty], input[name=unit_rate]{
+            text-align: center;
+        }
+
+        .bolt{
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+<h1>CPON Quotation Form</h1>
+
+<table id = "contractor" align = "right">
+<td> Contractor </td>
+<td id = "contractor_name"> Table(Contractor)</td>
+</table>
+<br>
+<br>
+
+<table>
+    <tr>
+        <td>
+        <table id = "orderInfo" name = "orderInfo">
+            <tr>
+            <td>Quotation / <br>AOW No.: </td><td id = 'quotation'>Table: orderInfo</td>
+            </tr>
+            <tr>
+            <td>Quotation Date: </td><td id = 'quotation_date'>orderInfo</td>
+            </tr>
+            <tr>
+            <td>BSN Number: </td><td id = 'BSN'>orderInfo</td>
+            </tr>
+            <tr>
+            <td>Order Number: </td><td id = 'order_number'>orderInfo</td>
+            </tr>
+            </table>
+        </td>
+
+        <td width="18%">
+            <table id = "office_use" name = "office_use" align = "right" border = "1">
+                    <tr><td>Office use:</td><td id = "officeuse">Table: office_use</td></tr>
+                    <tr><td>Pre-approved / Custome Acceptd</td><td id = "accept">Custome Accpeptd</td></tr>
+                    <tr><td>Approved by Product / PM</td><td id = "approved_by">Table: office_use</td></tr>
+                    <tr><td>Pre-Endorsed:</td><td id = "pre-endorsed">Table: office_use</td></tr>
+                    <tr><td>Checked by (Team Leader):</td><td id = "checked_by">Table: office_use</td></tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<br>
+
+<table name = 'main' id = 'main' border = '1' width = "100%">
+
+    <tr>
+        <th class = 'small'>Item</th><th class = 'big'>Description Of Works</th><th class = 'small'>Unit</th><th class = 'small'>Qty</th><th class = 'small'>Unit Rate</th><th class = 'small'>Amount</th>
+    </tr>
+
+    <tr>
+        <td class='item'>Main: For you to find easily</td>
+        <td class='description' class = "specialLeft">Main Table</td>
+        <td class='unit'>Main Table</td>
+        <td class='qty'>Main Table</td>
+        <td class='unit_rate'>Main Table</td>
+        <td class='amount'>Main Table</td>
+    </tr>
+
+    <tr><td class='item'></td><td class='description' class = "specialLeft"></td><td class='unit'></td><td class='qty'></td><td class='unit_rate'></td><td class='amount'></td></tr>
+    <tr><td class='item'></td><td class='description' class = "specialLeft"></td><td class='unit'></td><td class='qty'></td><td class='unit_rate'></td><td class='amount'></td></tr>
+    <tr><td class='item'></td><td class='description' class = "specialLeft"></td><td class='unit'></td><td class='qty'></td><td class='unit_rate'></td><td class='amount'></td></tr>
+    <tr><td class='item'></td><td class='description' class = "specialLeft"></td><td class='unit'></td><td class='qty'></td><td class='unit_rate'></td><td class='amount'></td></tr>
+    <tr><td class='item'></td><td class='description' class = "specialLeft"></td><td class='unit'></td><td class='qty'></td><td class='unit_rate'></td><td class='amount'></td></tr>
+    <tr><td class='item'></td><td class='description' class = "specialLeft"></td><td class='unit'></td><td class='qty'></td><td class='unit_rate'></td><td class='amount'></td></tr>
+    <tr><td class='item'></td><td class='description' class = "specialLeft"></td><td class='unit'></td><td class='qty'></td><td class='unit_rate'></td><td class='amount'></td></tr>
+    <tr><td class='item'></td><td class='description' class = "specialLeft"></td><td class='unit'></td><td class='qty'></td><td class='unit_rate'></td><td class='amount'></td></tr>
+    <tr><td class='item'></td><td class='description' class = "specialLeft"></td><td class='unit'></td><td class='qty'></td><td class='unit_rate'></td><td class='amount'></td></tr>
+        
+
+</table>
+
+<br>
+
+
+<table id = "total_amount" name = "total">
+        <tr>
+        <td width = "87.5%">*All Prices quoted are valid for 30 days from the date of stated on the quotation</td>
+        <td class = "bolt" width = "8%">Total Amount (HK$)</td>
+        <td width = "2.5%"></td>
+        <td align="right" id = "price">$15000</td>
+        </tr>
+</table>
+
+
+<table id = "remarks" name = "remarks">
+        <tr>
+        <td class = "bolt" width = "10%">Remarks:</td>
+        <td><table border = "1" id = 'border_collapse' width = "230%" style="height:90px;"><td valign="top" id ="remark">xxxxxxx</td></table></td>
+        </tr>
+</table>
+
+<table id ="upload">
+        <tr>
+        <td class = "bolt" width = "10%">Photo:</td>
+        <td id ="image_uploading"><input type="file" accept="image/*" onchange="loadFile(event)">
+            <img id="output"/></td>
+        </tr>
+</table>
+
+</body>
+</html>
+
+<script>
+    var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
